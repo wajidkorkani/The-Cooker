@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>The Cooker | {{ blog.title }}</title>
+{% endblock %}
+{% block body %}
+<style>
+    img {
+        max-width: 1110px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+    #body{
+      background: rgb(222, 198, 104);
+    }
+</style>
+{% if blog.image %}
+<img src="{{ blog.image.url }}">
+<br>
+{% endif %}
+<nav class="navbar bg-body-tertiary">
+    <div class="container text-center"> {# Added text-center class #}
+        <br><br>
+        <h1>{{ blog.title }}</h1>
+        <br><br>
+        <p>{{ blog.body }}</p>
+    </div>
+</nav>
+{% endblock %}

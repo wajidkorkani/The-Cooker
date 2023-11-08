@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% block head %}
 <title>The Cooker</title>
+
+{% endblock %}
+{% block body %}
 <style>
-    img{
-        max-width: 100%;
+    #image{
+        max-width: 300px;
     }
     h1{
         font-size: larger;
@@ -15,18 +18,16 @@
         background-color: rgb(239, 247, 168);
     }
 </style>
-{% endblock %}
-{% block body %}
 <div class="container text-center">
+  <div class="row">
     {% for blog in blogs %}
     {% if forloop.counter0|divisibleby:4 %}
-    <div class="row">
     {% endif %}
 
     <div class="col">
-        <a class="btn col-link" href="{% url 'about' blog.slug blog.id %}">
+        <a class="btn col-link" href="{% url 'blog_about_page' blog.id %}">
             {% if blog.image %}
-            <img src="{{ blog.image.url }}">
+            <img id='image' src="{{ blog.image.url }}">
             {% endif %}
             <br>
             <strong>{{ blog.title }}</strong>
@@ -35,9 +36,10 @@
     </div>
 
     {% if forloop.last or forloop.counter0|add:1|divisibleby:4 %}
-    </div>
+
     {% endif %}
     {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
