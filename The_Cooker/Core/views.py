@@ -12,6 +12,23 @@ def Home(request):
     return render(request, template, context)
 
 
+# Searchbar section
+def Searchbar(request):
+    if request.method == "POST":
+        searched = request.POST.get('search')
+        blogs_title = CookingBlog.objects.filter(title__icontains=searched)
+        blogs_name = CookingBlog.objects.filter(recipe_name__icontains=searched)
+        blogs_exit_title = CookingBlog.objects.filter(title__iexact=searched)
+        blogs_exit_name = CookingBlog.objects.filter(recipe_name__iexact=searched)
+        template = 'searchbar.html'
+        context = {
+            'blogs_name' : blogs_name,
+            'blogs_title' : blogs_title,
+            'blog_exict_title': blogs_exit_title,
+            'blog_exict_name' : blogs_exit_name,
+        }
+        return render(request, template, context)
+
 
 
 # Blogs section
