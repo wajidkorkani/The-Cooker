@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% block head %}
 <title>The Cooker</title>
-{% include 'input.html' %}
+<style>
+    img{
+        max-width: 300px;
+    }
+</style>
 {% endblock %}
 {% block body %}
-{% if text %}
-<p style="color:white; background:black; text-align:center">{{ text }}</p>
-<br><br>
-{% endif %}
 <br>
 {% if blog_exict_title %}
 <div class="container text-center">
-    {% for blog in blog_exit_title %}
+    {% for blog in blog_exict_title %}
     {% if forloop.counter0|divisibleby:4 %}
     <div class="row">
     {% endif %}
@@ -101,5 +101,7 @@
     {% endif %}
     {% endfor %}
 </div>
+{% else %}
+<h1 style="text-align: center;">Sorry this blog is not available.</h1>
 {% endif %}
 {% endblock %}
