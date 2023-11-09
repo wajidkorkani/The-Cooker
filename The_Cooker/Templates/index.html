@@ -1,7 +1,105 @@
 {% extends 'base.html' %}
 {% block head %}
 <title>The Cooker</title>
+{% include 'input.html' %}
 {% endblock %}
 {% block body %}
-<h1>{{ text }}</h1>
+{% if text %}
+<p style="color:white; background:black; text-align:center">{{ text }}</p>
+<br><br>
+{% endif %}
+<br>
+{% if blog_exict_title %}
+<div class="container text-center">
+    {% for blog in blog_exit_title %}
+    {% if forloop.counter0|divisibleby:4 %}
+    <div class="row">
+    {% endif %}
+
+    <div class="col">
+        <a class="btn col-link" href="{% url 'blog_about_page' blog.id %}">
+            {% if blog.image %}
+            <img src="{{ blog.image.url }}">
+            {% endif %}
+            <br>
+            <strong style="background-color: yellow;">{{ blog.title }}</strong>
+            <p>{{ blog.time }}</p>
+        </a>
+    </div>
+
+    {% if forloop.last or forloop.counter0|add:1|divisibleby:4 %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% elif blogs_exict_name %}
+<div class="container text-center">
+    {% for blog in blogs_exict_name %}
+    {% if forloop.counter0|divisibleby:4 %}
+    <div class="row">
+    {% endif %}
+
+    <div class="col">
+        <a class="btn col-link" href="{% url 'blog_about_page' blog.id %}">
+            {% if blog.image %}
+            <img src="{{ blog.image.url }}">
+            {% endif %}
+            <br>
+            <strong style="background-color: yellow;">{{ blog.title }}</strong>
+            <p>{{ blog.time }}</p>
+        </a>
+    </div>
+
+    {% if forloop.last or forloop.counter0|add:1|divisibleby:4 %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% elif blogs_title %}
+<div class="container text-center">
+    {% for blog in blogs_title %}
+    {% if forloop.counter0|divisibleby:4 %}
+    <div class="row">
+    {% endif %}
+
+    <div class="col">
+        <a class="btn col-link" href="{% url 'blog_about_page' blog.id %}">
+            {% if blog.image %}
+            <img src="{{ blog.image.url }}">
+            {% endif %}
+            <br>
+            <strong>{{ blog.title }}</strong>
+            <p>{{ blog.time }}</p>
+        </a>
+    </div>
+
+    {% if forloop.last or forloop.counter0|add:1|divisibleby:4 %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% elif blogs_name %}
+<div class="container text-center">
+    {% for blog in blogs_name %}
+    {% if forloop.counter0|divisibleby:4 %}
+    <div class="row">
+    {% endif %}
+
+    <div class="col">
+        <a class="btn col-link" href="{% url 'blog_about_page' blog.id %}">
+            {% if blog.image %}
+            <img src="{{ blog.image.url }}">
+            {% endif %}
+            <br>
+            <strong>{{ blog.title }}</strong>
+            <p>{{ blog.time }}</p>
+        </a>
+    </div>
+
+    {% if forloop.last or forloop.counter0|add:1|divisibleby:4 %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
 {% endblock %}
