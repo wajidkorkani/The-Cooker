@@ -5,3 +5,9 @@
 
 # Application url
 * developertestuser.pythonanywhere.com
+
+# In this project I used:
+* HTMl
+* CSS
+* Bootstrap
+* Django (Web Framework of python)
