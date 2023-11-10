@@ -2,6 +2,12 @@ from django.shortcuts import render
 from .models import CookingBlog
 # Create your views here.
 
+# 404 section
+
+def custom_404(request, exception=None):
+    return render(request, '404.html', status=404)
+    
+
 # Home page section
 def Home(request):
         def boot():
